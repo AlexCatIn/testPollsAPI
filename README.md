@@ -1,9 +1,10 @@
-Installation requirements
-    Python 3.8.5
-    Django==2.2.10
-    djangorestframework==3.12.4
+## Installation requirements
+  * python 3.8.5
+  * Django 2.2.10
+  * djangorestframework 3.12.4
 
-Installation guide
+
+## Installation guide
   ```
   cd pollMaker/
   pip install -r requirements.txt
@@ -14,32 +15,31 @@ Installation guide
   python manage.py runserver
   ```
 
-API documentation
-To get user token: 
-
-Request method: GET
-URL: http://localhost:8000/api/login/
-Body: 
-    username: 
-    password: 
-Example:
+## API documentation
+### To get user token: 
+* Request method: GET
+* URL: http://localhost:8000/api/login/
+* Body: 
+    * username: 
+    * password: 
+* Example:
 ```
 curl --location --request GET 'http://localhost:8000/api/login/' \
 --form 'username=%username' \
 --form 'password=%password'
 ```
 
-To create poll:
-Request method: POST
-URL: http://localhost:8000/api/poll/create/
-Header:
-   Authorization: Token userToken
-Body:
-    poll_name: name of poll
-    pub_date: publication date can be set only when poll is created, format: YYYY-MM-DD HH:MM:SS
-    end_date: poll end date, format: YYYY-MM-DD HH:MM:SS
-    Poll_description: description of poll
-Example: 
+### To create poll:
+* Request method: POST
+* URL: http://localhost:8000/api/poll/create/
+* Header:
+   *  Authorization: Token userToken
+* Body:
+    * poll_name: name of poll
+    * pub_date: publication date can be set only when poll is created, format: YYYY-MM-DD HH:MM:SS
+    * end_date: poll end date, format: YYYY-MM-DD HH:MM:SS
+    * Poll_description: description of poll
+* Example: 
 ```
 curl --location --request POST 'http://localhost:8000/api/poll/create/' \
 --header 'Authorization: Token %userToken' \
@@ -49,18 +49,18 @@ curl --location --request POST 'http://localhost:8000/api/poll/create/' \
 --form 'poll_description=%poll_description'
 ```
 
-To update poll:
-Request method: PATCH
-URL: http://localhost:8000/api/poll/update/[poll_id]/
-Header:
-    Authorization: Token userToken
-Param:
-    poll_id 
-Body:
-    poll_name: name of poll
-    end_date: poll end date, format: YYYY-MM-DD HH:MM:SS
-    Poll_description: description of poll
-Example:
+### To update poll:
+* Request method: PATCH
+* URL: http://localhost:8000/api/poll/update/[poll_id]/
+* Header:
+    * Authorization: Token userToken
+* Param:
+    * poll_id 
+* Body:
+    * poll_name: name of poll
+    * end_date: poll end date, format: YYYY-MM-DD HH:MM:SS
+    * Poll_description: description of poll
+* Example:
 ```
 curl --location --request PATCH 'http://localhost:8000/api/poll/update/[poll_id]/' \
 --header 'Authorization: Token %userToken' \
@@ -69,51 +69,51 @@ curl --location --request PATCH 'http://localhost:8000/api/poll/update/[poll_id]
 --form 'poll_description=%poll_description'
 ```
 
-To delete poll:
-Request method: DELETE
-URL: http://localhost:8000/api/poll/update/[poll_id]
-Header:
-    Authorization: Token userToken
-Param:
-    poll_id
+### To delete poll:
+* Request method: DELETE
+* URL: http://localhost:8000/api/poll/update/[poll_id]
+* Header:
+    * Authorization: Token userToken
+* Param:
+    * poll_id
 Example:
 ```
 curl --location --request DELETE 'http://localhost:8000/api/poll/update/[poll_id]/' \
 --header 'Authorization: Token %userToken'
 ```
 
-To view all polls:
-Request method: GET
-URL: http://localhost:8000/api/poll/view/
-Header:
-    Authorization: Token userToken
-Example:
+### To view all polls:
+* Request method: GET
+* URL: http://localhost:8000/api/poll/view/
+* Header:
+    * Authorization: Token userToken
+* Example:
 ```
 curl --location --request GET 'http://localhost:8000/api/poll/view/' \
 --header 'Authorization: Token %userToken'
 ```
 
-To view currently active polls:
-Request method: GET
-URL: http://localhost:8000/api/poll/view/active/
-Header:
-    Authorization: Token userToken
-Example:
+### To view currently active polls:
+* Request method: GET
+* URL: http://localhost:8000/api/poll/view/active/
+* Header:
+    * Authorization: Token userToken
+* Example:
 ```
 curl --location --request GET 'http://localhost:8000/api/poll/view/active/' \
 --header 'Authorization: Token %userToken'
 ```
 
-To create question:
-Request method: POST
-URL: http://localhost:8000/api/question/create/
-Header:
-    Authorization: Token userToken
-Body:
-    poll: id of poll 
-    question_text: 
-    question_type: can be only `one`, `multiple` or `text`
-Example:
+### To create question:
+* Request method: POST
+* URL: http://localhost:8000/api/question/create/
+* Header:
+    * Authorization: Token userToken
+* Body:
+    * poll: id of poll 
+    * question_text: 
+    * question_type: can be only `one`, `multiple` or `text`
+* Example:
 ```
 curl --location --request POST 'http://localhost:8000/api/question/create/' \
 --header 'Authorization: Token %userToken' \
@@ -122,18 +122,18 @@ curl --location --request POST 'http://localhost:8000/api/question/create/' \
 --form 'question_type=%question_type' \
 ```
 
-To update question:
-Request method: PATCH
-URL: http://localhost:8000/api/question/update/[question_id]/
-Header:
-    Authorization: Token userToken
-Param:
-    question_id
-Body:
-    poll: id of poll 
-    question_text: question
-    question_type: can be only `one`, `multiple` or `text`
-Example:
+### To update question:
+* Request method: PATCH
+* URL: http://localhost:8000/api/question/update/[question_id]/
+* Header:
+    * Authorization: Token userToken
+* Param:
+    * question_id
+* Body:
+    * poll: id of poll 
+    * question_text: question
+    * question_type: can be only `one`, `multiple` or `text`
+* Example:
 ```
 curl --location --request PATCH 'http://localhost:8000/api/question/update/[question_id]/' \
 --header 'Authorization: Token %userToken' \
@@ -142,14 +142,14 @@ curl --location --request PATCH 'http://localhost:8000/api/question/update/[ques
 --form 'question_type=%question_type' \
 ```
 
-To delete question:
-Request method: DELETE
-URL: http://localhost:8000/api/question/update/[question_id]/
-Header:
-    Authorization: Token userToken
-Param:
-    question_id
-Example:
+### To delete question:
+* Request method: DELETE
+* URL: http://localhost:8000/api/question/update/[question_id]/
+* Header:
+    * Authorization: Token userToken
+* Param:
+    * question_id
+* Example:
 ```
 curl --location --request DELETE 'http://localhost:8000/api/question/update/[question_id]/' \
 --header 'Authorization: Token %userToken' \
@@ -158,15 +158,15 @@ curl --location --request DELETE 'http://localhost:8000/api/question/update/[que
 --form 'question_type=%question_type' \
 ```
 
-To create choice:
-Request method: POST
-URL: http://localhost:8000/api/choice/create/
-Header:
-    Authorization: Token userToken
-Body:
-    question: id of question
-    choice_text: choice
-Example:
+### To create choice:
+* Request method: POST
+* URL: http://localhost:8000/api/choice/create/
+* Header:
+    * Authorization: Token userToken
+* Body:
+    * question: id of question
+    * choice_text: choice
+* Example:
 ```
 curl --location --request POST 'http://localhost:8000/api/choice/create/' \
 --header 'Authorization: Token %userToken' \
@@ -174,17 +174,17 @@ curl --location --request POST 'http://localhost:8000/api/choice/create/' \
 --form 'choice_text=%choice_text'
 ```
 
-To update choice:
-Request method: PATCH
-URL: http://localhost:8000/api/choice/update/[choice_id]/
-Header:
-    Authorization: Token userToken
-Param:
-    choice_id
-Body:
-    question: id of question
-    choice_text: choice
-Example:
+### To update choice:
+* Request method: PATCH
+* URL: http://localhost:8000/api/choice/update/[choice_id]/
+* Header:
+    * Authorization: Token userToken
+* Param:
+    * choice_id
+* Body:
+    * question: id of question
+    * choice_text: choice
+* Example:
 ```
 curl --location --request PATCH 'http://localhost:8000/api/choice/update/[choice_id]/' \
 --header 'Authorization: Token %userToken' \
@@ -192,14 +192,14 @@ curl --location --request PATCH 'http://localhost:8000/api/choice/update/[choice
 --form 'choice_text=%choice_text'
 ```
 
-To delete choice:
-Request method: DELETE
-URL: http://localhost:8000/api/choice/update/[choice_id]/
-Header:
-    Authorization: Token userToken
-Param:
-    choice_id
-Example:
+### To delete choice:
+* Request method: DELETE
+* URL: http://localhost:8000/api/choice/update/[choice_id]/
+* Header:
+    * Authorization: Token userToken
+* Param:
+    * choice_id
+* Example:
 ```
 curl --location --request DELETE 'http://localhost:8000/api/choice/update/[choice_id]/' \
 --header 'Authorization: Token %userToken' \
@@ -207,17 +207,17 @@ curl --location --request DELETE 'http://localhost:8000/api/choice/update/[choic
 --form 'choice_text=%choice_text'
 ```
 
-To create answer:
-Request method: POST
-URL: http://localhost:8000/api/answer/create/
-Header:
-    Authorization: Token userToken
-Body:
-    poll: id of poll
-    question: id of question
-    choice: if question type is one or multiple then it’s id of choice else null
-    choice_text: if question type is text then it’s text based answer else null
-Example:
+### To create answer:
+* Request method: POST
+* URL: http://localhost:8000/api/answer/create/
+* Header:
+    * Authorization: Token userToken
+* Body:
+    * poll: id of poll
+    * question: id of question
+    * choice: if question type is one or multiple then it’s id of choice else null
+    * choice_text: if question type is text then it’s text based answer else null
+* Example:
 ```
 curl --location --request POST 'http://localhost:8000/api/answer/create/' \
 --header 'Authorization: Token %userToken' \
@@ -227,19 +227,19 @@ curl --location --request POST 'http://localhost:8000/api/answer/create/' \
 --form 'choice_text=%choice_text'
 ```
 
-To update answer:
-Request method: PATCH
-URL: http://localhost:8000/api/answer/update/[answer_id]/
-Header:
-    Authorization: Token userToken
-Param:
-    answer_id
-Body:
-    poll: id of poll
-    question: id of question
-    choice: if question type is one or multiple then it’s id of choice else null
-    choice_text: if question type is text then it’s text based answer else null
-Example:
+### To update answer:
+* Request method: PATCH
+* URL: http://localhost:8000/api/answer/update/[answer_id]/
+* Header:
+    * Authorization: Token userToken
+* Param:
+    * answer_id
+* Body:
+    * poll: id of poll
+    * question: id of question
+    * choice: if question type is one or multiple then it’s id of choice else null
+    * choice_text: if question type is text then it’s text based answer else null
+* Example:
 ```
 curl --location --request PATCH 'http://localhost:8000/api/answer/update/[answer_id]' \
 --header 'Authorization: Token %userToken' \
@@ -249,27 +249,27 @@ curl --location --request PATCH 'http://localhost:8000/api/answer/update/[answer
 --form 'choice_text=%choice_text'
 ```
 
-To delete answer:
-Request method: DELETE
-URL: http://localhost:8000/api/answer/update/[answer_id]/
-Header:
-    Authorization: Token userToken
-Param:
-    answer_id
-Example:
+### To delete answer:
+* Request method: DELETE
+* URL: http://localhost:8000/api/answer/update/[answer_id]/
+* Header:
+    * Authorization: Token userToken
+* Param:
+    * answer_id
+* Example:
 ```
 curl --location --request DELETE 'http://localhost:8000/api/answer/update/[answer_id]' \
 --header 'Authorization: Token %userToken'
 ```
 
-To view answers of user:
-Request method: GET
-URL: http://localhost:8000/api/answer/view/[user_id]/
-Param:
-    user_id
-Header:
-    Authorization: Token userToken
-Example:
+### To view answers of user:
+* Request method: GET
+* URL: http://localhost:8000/api/answer/view/[user_id]/
+* Param:
+    * user_id
+* Header:
+    * Authorization: Token userToken
+* Example:
 ```
 curl --location --request GET 'http://localhost:8000/api/answer/view/[user_id]' \
 --header 'Authorization: Token %userToken'
